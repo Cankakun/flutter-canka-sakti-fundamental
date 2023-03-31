@@ -1,6 +1,6 @@
 # test1
 
-A new Flutter project.
+- pembuatan apk flutter (percobaan)
 
 ## Getting Started
 
