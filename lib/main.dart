@@ -15,6 +15,40 @@ class _MyAppState extends State<MyApp> {
   TextEditingController controller1 = TextEditingController();
   TextEditingController controller2 = TextEditingController();
 
+  double result = 0, angkaPertama = 0, angkaKedua = 0;
+
+  tambah(){
+    setState(() {
+      angkaPertama = double.parse(controller1.text);
+      angkaKedua = double.parse(controller2.text);
+      result = angkaPertama + angkaKedua;
+    });
+  }
+
+  kurang(){
+    setState(() {
+      angkaPertama = double.parse(controller1.text);
+      angkaKedua = double.parse(controller2.text);
+      result = angkaPertama - angkaKedua;
+    });
+  }
+
+  kali(){
+    setState(() {
+      angkaPertama = double.parse(controller1.text);
+      angkaKedua = double.parse(controller2.text);
+      result = angkaPertama * angkaKedua;
+    });
+  }
+
+  bagi(){
+    setState(() {
+      angkaPertama = double.parse(controller1.text);
+      angkaKedua = double.parse(controller2.text);
+      result = angkaPertama / angkaKedua;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,9 +57,10 @@ class _MyAppState extends State<MyApp> {
         body: Column(
             children: [
               Align(alignment: Alignment.centerLeft, child: 
-              Text('Result : ', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold))),
+              Padding(padding: EdgeInsets.fromLTRB(20, 10, 0, 0), 
+              child: Text('Result : $result', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)))),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(20,0,20,0),
@@ -58,19 +93,35 @@ class _MyAppState extends State<MyApp> {
                 alignment: Alignment.center,
                 child: Column (
                   children: [
-                    ElevatedButton(onPressed: (){}, child: Text('ADD')),
+                    ElevatedButton(onPressed: (){
+                      tambah();
+                      controller1.clear();
+                      controller2.clear();
+                    }, child: Text('ADD')),
                     SizedBox(
                       height: 10,
                     ),
-                    ElevatedButton(onPressed: (){}, child: Text('SUBTRACT')),
+                    ElevatedButton(onPressed: (){
+                      kurang();
+                      controller1.clear();
+                      controller2.clear();
+                    }, child: Text('SUBTRACT')),
                     SizedBox(
                       height: 10,
                     ),
-                    ElevatedButton(onPressed: (){}, child: Text('MULTIPLY')),
+                    ElevatedButton(onPressed: (){
+                      kali();
+                      controller1.clear();
+                      controller2.clear();
+                    }, child: Text('MULTIPLY')),
                     SizedBox(
                       height: 10,
                     ),
-                    ElevatedButton(onPressed: (){}, child: Text('DIVIDE'))],
+                    ElevatedButton(onPressed: (){
+                      bagi();
+                      controller1.clear();
+                      controller2.clear();
+                    }, child: Text('DIVIDE'))],
               ))
             ],
           ),
